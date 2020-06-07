@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/accounts/accounts.iml" filepath="$PROJECT_DIR$/accounts/accounts.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apigateway/apigateway.iml" filepath="$PROJECT_DIR$/apigateway/apigateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configserver/configserver.iml" filepath="$PROJECT_DIR$/configserver/configserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inventories/inventories.iml" filepath="$PROJECT_DIR$/inventories/inventories.iml" />
+      <module fileurl="file://$PROJECT_DIR$/orders/orders.iml" filepath="$PROJECT_DIR$/orders/orders.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recommendations/recommendations.iml" filepath="$PROJECT_DIR$/recommendations/recommendations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/servicediscovery/servicediscovery.iml" filepath="$PROJECT_DIR$/servicediscovery/servicediscovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shippings/shippings.iml" filepath="$PROJECT_DIR$/shippings/shippings.iml" />
+    </modules>
+  </component>
+</project>

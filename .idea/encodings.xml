@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/accounts/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/accounts/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/apigateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/apigateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configserver/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/configserver/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/inventories/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/inventories/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/orders/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/orders/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/recommendations/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/recommendations/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/servicediscovery/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shippings/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shippings/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
