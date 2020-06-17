@@ -53,12 +53,12 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: dsi-spring-configserver
-          run: heroku plugins:install java && heroku deploy:jar builds/configserver-0.0.1-SNAPSHOT.jar --app dsi-spring-configserver
+        run: heroku plugins:install java && heroku deploy:jar builds/configserver-0.0.1-SNAPSHOT.jar --app dsi-spring-configserver
       - name: Build and push service discovery
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: dsi-spring-servicediscovery
-          run: heroku deploy:jar builds/servicediscovery-0.0.1-SNAPSHOT.jar --app dsi-spring-servicediscovery
+        run: heroku deploy:jar builds/servicediscovery-0.0.1-SNAPSHOT.jar --app dsi-spring-servicediscovery
       - name: Build and push accounts service
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
