@@ -1,13 +1,13 @@
 server:
-  port: 9090
+  port: ${PORT:8080}
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: https://dsi-spring-configserver.herokuapp.com
   client:
     registerWithEureka: true
     fetchRegistry: false
     serviceUrl:
-      defaultZone: http://localhost:${server.port}/eureka/
+      defaultZone: ${eureka.instance.hostname}/eureka/
   server:
     wait-time-in-ms-when-sync-empty: 3000

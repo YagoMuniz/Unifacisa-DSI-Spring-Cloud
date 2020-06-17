@@ -28,15 +28,23 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build Config Server Microservice
+      - name: Build Config Server
         run: mvn -B package --file configserver/pom.xml
-      - name: Create build path config
-        run: mkdir config && cp configserver/target/*.jar config
+      - name: Criando o caminho para armazenar as builds
+        run: mkdir builds && cp configserver/target/*.jar builds
+      - name: Build Service Discovery Server
+        run: mvn -B package --file servicediscovery/pom.xml
+      - name: Adicionando o servicediscovery ao builds
+        run: cp servicediscovery/target/*.jar builds
+      - name: Build Acconts Service
+        run: mvn -B package --file accounts/pom.xml
+      - name: Adicionando o AccountsService ao builds
+        run: cp accounts/target/*.jar builds
       - name: Upload math result for job
         uses: actions/upload-artifact@v1
         with:
-          name: example_github_actions
-          path: config
+          name: Fazendo upload dos arquivos de build
+          path: builds
       - name: Login to Heroku Container registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
@@ -44,5 +52,7 @@ jobs:
       - name: Build and push
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: dsi-spring-configserver
-        run: heroku plugins:install java && heroku create --no-remote && heroku deploy:jar config/configserver-0.0.1-SNAPSHOT.jar --app dsi-spring-configserver
+          # HEROKU_APP_NAME: dsi-spring-configserver
+        run: heroku plugins:install java && heroku deploy:jar builds/configserver-0.0.1-SNAPSHOT.jar --app dsi-spring-configserver
+        run: heroku deploy:jar builds/servicediscovery-0.0.1-SNAPSHOT.jar --app dsi-spring-servicediscovery
+        run: heroku deploy:jar builds/accounts-0.0.1-SNAPSHOT.jar --app dsi-spring-accounts
