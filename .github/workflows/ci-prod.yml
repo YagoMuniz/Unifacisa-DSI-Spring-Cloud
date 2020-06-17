@@ -31,7 +31,7 @@ jobs:
       - name: Build Config Server Microservice
         run: mvn -B package --file configserver/pom.xml
       - name: Create build path config
-        run: mkdir config && cp accounts/target/*.jar config
+        run: mkdir config && cp configserver/target/*.jar config
       - name: Upload math result for job
         uses: actions/upload-artifact@v1
         with:
