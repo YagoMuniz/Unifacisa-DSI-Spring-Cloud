@@ -35,7 +35,7 @@ jobs:
       - name: Criando build do API Gateway Server
         run: mvn -B package --file apigateway/pom.xml -DskipTests && cp apigateway/target/*.jar builds
       - name: Criando build do Account Service
-        run: mvn -B package --file accounts/pom.xml -DskipTests && p accounts/target/*.jar builds
+        run: mvn -B package --file accounts/pom.xml -DskipTests && cp accounts/target/*.jar builds
       - name: Upload math result for job
         uses: actions/upload-artifact@v1
         with:
