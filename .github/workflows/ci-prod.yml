@@ -32,14 +32,10 @@ jobs:
         run: mvn -B package --file configserver/pom.xml && mkdir builds && cp configserver/target/*.jar builds
       - name: Criando build do Service Discovery Server
         run: mvn -B package --file servicediscovery/pom.xml && cp servicediscovery/target/*.jar builds
-      # - name: Build Api Gateway Server
-      #   run: mvn -B package --file apigateway/pom.xml
-      # - name: Adicionando o Api Gateway ao builds
-      #   run: cp apigateway/target/*.jar builds
-      # - name: Build Accounts Service
-      #   run: mvn -B package --file apigateway/pom.xml
-      # - name: Adicionando o Accounts Service ao builds
-      #   run: cp accounts/target/*.jar builds
+      - name: Criando build do API Gateway Server
+        run: mvn -B package --file apigateway/pom.xml && cp apigateway/target/*.jar builds
+      - name: Criando build do Account Service
+        run: mvn -B package --file accounts/pom.xml && p accounts/target/*.jar builds
       - name: Upload math result for job
         uses: actions/upload-artifact@v1
         with:
@@ -59,13 +55,13 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: dsi-spring-servicediscovery
         run: heroku deploy:jar builds/servicediscovery-0.0.1-SNAPSHOT.jar --app dsi-spring-servicediscovery
-      # - name: Build and push Api Gateway server
-      #   env:
-      #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      #     HEROKU_APP_NAME: dsi-spring-apigateway
-      #   run: heroku deploy:jar builds/apigateway-0.0.1-SNAPSHOT.jar --app dsi-spring-apigateway
-      # - name: Build and push Accounts Service
-      #   env:
-      #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      #     HEROKU_APP_NAME: dsi-spring-accounts
-      #   run: heroku deploy:jar builds/accounts-0.0.1-SNAPSHOT.jar --app dsi-spring-accounts
+      - name: Deploy do API Gateway Server
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: dsi-spring-apigateway
+        run: heroku deploy:jar builds/apigateway-0.0.1-SNAPSHOT.jar --app dsi-spring-apigateway
+      - name: Deploy do Account Service
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_APP_NAME: dsi-spring-accounts
+        run: heroku deploy:jar builds/accounts-0.0.1-SNAPSHOT.jar --app dsi-spring-accounts
