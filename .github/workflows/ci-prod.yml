@@ -34,8 +34,8 @@ jobs:
         run: mvn -B package --file servicediscovery/pom.xml && cp servicediscovery/target/*.jar builds
       - name: Criando build do API Gateway Server
         run: mvn -B package --file apigateway/pom.xml && cp apigateway/target/*.jar builds
-      - name: Criando build do Account Service
-        run: mvn -B package --file accounts/pom.xml && p accounts/target/*.jar builds
+      # - name: Criando build do Account Service
+      #   run: mvn -B package --file accounts/pom.xml && p accounts/target/*.jar builds
       - name: Upload math result for job
         uses: actions/upload-artifact@v1
         with:
@@ -60,8 +60,8 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: dsi-spring-apigateway
         run: heroku deploy:jar builds/apigateway-0.0.1-SNAPSHOT.jar --app dsi-spring-apigateway
-      - name: Deploy do Account Service
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: dsi-spring-accounts
-        run: heroku deploy:jar builds/accounts-0.0.1-SNAPSHOT.jar --app dsi-spring-accounts
+      # - name: Deploy do Account Service
+      #   env:
+      #     HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      #     HEROKU_APP_NAME: dsi-spring-accounts
+      #   run: heroku deploy:jar builds/accounts-0.0.1-SNAPSHOT.jar --app dsi-spring-accounts
