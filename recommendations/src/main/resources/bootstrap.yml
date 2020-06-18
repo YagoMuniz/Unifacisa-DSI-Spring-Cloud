@@ -3,4 +3,4 @@ spring:
     name: recommendations
   cloud:
     config:
-      uri: http://localhost:9080
+      uri: https://dsi-spring-configserver.herokuapp.com
