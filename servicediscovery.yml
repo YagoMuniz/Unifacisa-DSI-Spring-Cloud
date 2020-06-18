@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: dsi-spring-configserver.herokuapp.com
+    hostname: dsi-spring-servicediscovery.herokuapp.com
   client:
     registerWithEureka: true
     fetchRegistry: false

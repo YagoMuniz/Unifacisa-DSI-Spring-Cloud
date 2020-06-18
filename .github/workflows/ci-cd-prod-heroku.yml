@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI FOR PROD
+name: HEROKU DEPLOYMENT
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -36,6 +36,14 @@ jobs:
         run: mvn -B package --file apigateway/pom.xml -DskipTests && cp apigateway/target/*.jar builds
       - name: Criando build do Account Service
         run: mvn -B package --file accounts/pom.xml -DskipTests && cp accounts/target/*.jar builds
+      - name: Criando build do Inventories Service
+        run: mvn -B package --file inventories/pom.xml -DskipTests && cp inventories/target/*.jar builds
+      - name: Criando build do Orders Service
+        run: mvn -B package --file orders/pom.xml -DskipTests && cp orders/target/*.jar builds
+      - name: Criando build do Recommendations Service
+        run: mvn -B package --file recommendations/pom.xml -DskipTests && cp recommendations/target/*.jar builds
+      - name: Criando build do Shippings Service
+        run: mvn -B package --file shippings/pom.xml -DskipTests && cp shippings/target/*.jar builds
       - name: Upload math result for job
         uses: actions/upload-artifact@v1
         with:
@@ -65,3 +73,27 @@ jobs:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
           HEROKU_APP_NAME: dsi-spring-accounts
         run: heroku deploy:jar builds/accounts-0.0.1-SNAPSHOT.jar --app dsi-spring-accounts
+      - name: Login to Heroku Container registry 2
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_2 }}
+        run: heroku container:login
+      - name: Deploy do Recommendations Service
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_2 }}
+          HEROKU_APP_NAME: dsi-spring-recommendations
+        run: heroku deploy:jar builds/recommendations-0.0.1-SNAPSHOT.jar --app dsi-spring-recommendations
+      - name: Deploy do Orders Service
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_2 }}
+          HEROKU_APP_NAME: dsi-spring-orders
+        run: heroku deploy:jar builds/orders-0.0.1-SNAPSHOT.jar --app dsi-spring-orders
+      - name: Deploy do Inventories Service
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_2 }}
+          HEROKU_APP_NAME: dsi-spring-inventories
+        run: heroku deploy:jar builds/inventories-0.0.1-SNAPSHOT.jar --app dsi-spring-inventories
+      - name: Deploy do Shippings Service
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY_2 }}
+          HEROKU_APP_NAME: dsi-spring-shippings
+        run: heroku deploy:jar builds/shippings-0.0.1-SNAPSHOT.jar --app dsi-spring-shippings

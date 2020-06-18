@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: dsi-spring-configserver.herokuapp.com
+    hostname: dsi-spring-servicediscovery.herokuapp.com
   client:
     registerWithEureka: true
     fetchRegistry: false
@@ -17,15 +17,15 @@ zuul:
     accounts:
       path: /accounts/**
       url: https://dsi-spring-accounts.herokuapp.com/accounts/
-    # inventories:
-    #   path: /inventories/**
-    #   url: http://localhost:9097/inventories/
-    # orders:
-    #   path: /orders/**
-    #   url: http://localhost:9096/orders/
-    # recommendations:
-    #   path: /recommendations/**
-    #   url: http://localhost:9095/recommendations/
-    # shippings:
-    #   path: /shippings/**
-    #   url: http://localhost:9094/shippings
+    inventories:
+      path: /inventories/**
+      url: https://dsi-spring-accoinventoriesunts.herokuapp.com/inventories/
+    orders:
+      path: /orders/**
+      url: https://dsi-spring-orders.herokuapp.com/orders/
+    recommendations:
+      path: /recommendations/**
+      url: https://dsi-spring-recommendations.herokuapp.com/recommendations/
+    shippings:
+      path: /shippings/**
+      url: https://dsi-spring-shippings.herokuapp.com/shippings/
